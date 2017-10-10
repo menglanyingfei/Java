@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>这是标题</title>
+	<!-- <link rel="stylesheet" type="text/css" href="CSS/div.css" /> -->
+	<script type="text/javascript" src="js/out.js"></script>
+</head>
+
+<body>
+    <!--
+    	这是注释。
+    	1. 文件上传
+    	2. 有序列表
+    	3. css的使用  
+    	4. js的全局变量和局部变量
+    	5. js与HTML的结合
+    -->
+	<form action="">
+		<input type="file" />
+	</form>
+	<ol type="a" start="3">
+		<li>test</li>
+	</ol>
+	<div>
+		这是div的区域。
+	</div>
+	<script type="text/javascript">
+		var x = 4;
+		function show(x) {
+			x = 8;
+		}
+		show(x);
+		alert("x = " + x);
+		document.write("x = " + x);
+		
+		//去掉字符串两边的空格
+		function mytrim(str) {
+			//0位置的下标
+			var start = 0;
+			//最后位置的下表值
+			var end = str.length - 1;
+			// start和end一直变化，查找我下标值位置的字符串是否是空格
+			
+			while (start <= end && str.charAt(start) == " ") {
+				start++;
+			}
+			while (start <= end && str.charAt(end) == " ") {
+				end--;
+			}
+			var result = str.substring(start, end + 1);
+			return result;
+		}
+
+		var str2 = "  abc     ";
+		alert("-" + str2 + "-");
+		alert("-" + mytrim(str2) + "-");
+		println("<br/>" + "Test");
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

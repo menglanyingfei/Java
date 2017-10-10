@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Spring-Exer02"
+  id="myeclipse.1504359665838"
+  context-root="/Spring-Exer02"
+  j2ee-spec="1.7"
+  archive="Spring-Exer02.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

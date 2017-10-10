@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	 <tlib-version>1.0</tlib-version>
+	 <short-name>my</short-name>
+	 <uri>http://www.lxy.org/tag</uri>
+	 
+	 <tag>
+	       <name>sex</name> <!-- 标签名称 -->
+	       <tag-class>org.lxy.customer.tag.GenderTag</tag-class> <!-- 标签类 -->
+	       <body-content>empty</body-content> <!-- 标签体中内容 -->
+	       
+	       <attribute>
+	           <name>gender</name> <!-- 属性名称 -->
+	           <required>true</required> <!-- 属性必须有 -->
+	           <rtexprvalue>true</rtexprvalue> <!-- 属性值可以接收el表达式 -->
+	       </attribute>     
+	 </tag>	 
+</taglib>

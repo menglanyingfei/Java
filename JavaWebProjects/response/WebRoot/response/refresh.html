@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 3秒后跳转 -->
+<meta http-equiv="refresh" content="3;url=/response/response/login.html">
+<title>页面定时跳转（读秒）</title>
+</head>
+<body onload="run()">
+    <!--
+    
+    -->
+    <h2>页面将在<span id="spanId">3</span>秒后跳转</h2>
+</body>
+    <script type="text/javascript">
+        /*
+            读秒的操作
+            页面一加载，加载事件      onload
+            执行读秒的操作，每隔一秒变一次
+            每隔一秒，js的定时器
+        */
+        var x = 3;
+        function run() {
+        	var span = document.getElementById("spanId");
+        	span.innerHTML = x;
+        	x--;
+        	window.setTimeout("run()", 1000);
+        }
+    </script>
+</html>

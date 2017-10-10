@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<users> 
+  <user> 
+    <username>李星阳</username>  
+    <password>123456</password>  
+    <nickname>li</nickname>  
+    <email>li@163.com</email> 
+  </user>  
+  <user>
+    <username>li</username>
+    <password>666666</password>
+    <nickname>lili</nickname>
+    <email>55555@12.com</email>
+  </user>
+</users>

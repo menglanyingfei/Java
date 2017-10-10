@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="spring-template"
+  id="myeclipse.1503502933485"
+  context-root="/spring-template"
+  j2ee-spec="1.7"
+  archive="spring-template.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

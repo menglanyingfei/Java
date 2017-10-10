@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
+  <servlet>
+    <servlet-name>ErrorServlet</servlet-name>
+    <servlet-class>com.lxy.servlet.ErrorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.lxy.response.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RefreshServlet</servlet-name>
+    <servlet-class>com.lxy.response.RefreshServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CEPServlet</servlet-name>
+    <servlet-class>com.lxy.response.CEPServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OutputServlet</servlet-name>
+    <servlet-class>com.lxy.response.OutputServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.lxy.response.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.lxy.response.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckcodeServlet</servlet-name>
+    <servlet-class>com.lxy.response.CheckcodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestServlet1</servlet-name>
+    <servlet-class>com.lxy.request.RequestServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>com.lxy.request.RegServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo3</servlet-name>
+    <servlet-class>com.lxy.request.RequestDemo3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo4</servlet-name>
+    <servlet-class>com.lxy.request.RequestDemo4</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Login2Servlet</servlet-name>
+    <servlet-class>com.lxy.request.Login2Servlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>ErrorServlet</servlet-name>
+    <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RefreshServlet</servlet-name>
+    <url-pattern>/refresh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CEPServlet</servlet-name>
+    <url-pattern>/cep</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OutputServlet</servlet-name>
+    <url-pattern>/output</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckcodeServlet</servlet-name>
+    <url-pattern>/checkcode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestServlet1</servlet-name>
+    <url-pattern>/request1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo3</servlet-name>
+    <url-pattern>/request3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo4</servlet-name>
+    <url-pattern>/request4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Login2Servlet</servlet-name>
+    <url-pattern>/login2</url-pattern>
+  </servlet-mapping>	
+  
+</web-app>

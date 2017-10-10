@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+    <!-- 配置全局初始化参数 -->
+    <context-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>ServletDemo</servlet-name>
+        <servlet-class>com.lxy.servlet.ServletDemo</servlet-class>
+    </servlet> 
+    <servlet-mapping>
+        <servlet-name>ServletDemo</servlet-name>
+        <url-pattern>/demo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.lxy.servlet.ServletDemo1</servlet-class>
+    </servlet>   
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/demo1</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 使用模板生成的 -->
+    <servlet>
+	    <description>This is the description of my J2EE component</description>
+	    <display-name>This is the display name of my J2EE component</display-name>
+	    <servlet-name>ServletDemo4</servlet-name>
+	    <servlet-class>com.lxy.servlet.ServletDemo4</servlet-class>
+	    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+	    <servlet-name>ServletDemo4</servlet-name>
+	    <url-pattern>/demo4</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 演示初始化参数 -->
+   <servlet>
+	    <description>This is the description of my J2EE component</description>
+	    <display-name>This is the display name of my J2EE component</display-name>
+	    <servlet-name>ServletDemo5</servlet-name>
+	    <servlet-class>com.lxy.servlet.ServletDemo5</servlet-class>
+        <!-- 配置初始化参数 -->
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>123</param-value>
+        </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDemo5</servlet-name>
+    <url-pattern>/demo5</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ContextDemo</servlet-name>
+    <servlet-class>com.lxy.context.ContextDemo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CountServlet</servlet-name>
+    <servlet-class>com.lxy.context.CountServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowServlet</servlet-name>
+    <servlet-class>com.lxy.context.ShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ReadServlet</servlet-name>
+    <servlet-class>com.lxy.context.ReadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo6</servlet-name>
+    <servlet-class>com.lxy.http.ServletDemo6</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RefreshServlet</servlet-name>
+    <servlet-class>com.lxy.http.RefreshServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>ContextDemo</servlet-name>
+    <url-pattern>/context</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CountServlet</servlet-name>
+    <url-pattern>/count</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowServlet</servlet-name>
+    <url-pattern>/show</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReadServlet</servlet-name>
+    <url-pattern>/read</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo6</servlet-name>
+    <url-pattern>/demo6</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RefreshServlet</servlet-name>
+    <url-pattern>/refresh</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

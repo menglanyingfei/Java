@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students> 
+  <student> 
+    <num>001</num>  
+    <name>李小阳</name>  
+    <desc>加油，好好学习！</desc> 
+  </student>  
+  <student>
+    <num>002</num>
+    <name>张三</name>
+    <desc>也爱学习</desc>
+  </student>
+</students>
