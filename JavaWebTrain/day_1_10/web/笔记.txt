@@ -1,0 +1,77 @@
+如何创建一个web的应用?
+1. tomcat的webapps路径
+2. 创建一个文件夹, 名字为项目名
+3. 如果只有静态资源, 直接创建html文件
+    访问动态资源, 需要WEB-INF里面web.xml文件, WEB-INF里面的内容不能直接访问,
+    需要转发才能访问!
+4. 访问方式:
+http://地址:端口号/项目名/资源名
+
+MyEclipse创建的项目目录结构:
+src: Java源代码
+WebRoot: 该目录下是整个应用程序所有的资源文件,
+当发布到Tomcat, 该目录自动变为项目名
+WEB-INF: 该目录下 资源不能直接访问
+    lib: 该目录下用来导入外部jar包
+    web.xml: 是项目的配置文件, 在该配置文件中一般用来配置web三大组件
+    classes: 该目录下是所有Java源码被编译后的.class文件
+
+Servlet的三种实现方法:
+    1. 实现Servlet接口
+    2. 继承GenericServlet
+    (使用)3. 继承HttpServlet类
+        两个service方法
+            doGet(), doPost()
+
+Servlet中常见的对象:
+    Request: 用来接收客户端传递过来的请求参数
+    Response: 用来向客户端响应结果
+    ServletConfig: 该对象封装了Servlet的配置信息
+    ServletContext: Java 4大域对象之一, 它伴随着整个服务器的开启和关闭
+    Cookie:
+    HttpSession:
+
+get方式和post方式:
+    post: 当使用表单提交 并且method属性为post时, post请求,
+        其它请求都为get方式
+
+ServletConfig:
+    获取方式: this.getServletConfig()
+
+
+Servlet的生命周期:
+    1. 当客户端向服务器发送请求的时候, 服务器tomcat根据请求路径
+在web.xml中找到对应Servlet的全限定名, 然后实例化一个
+servlet对象, 然后马上调用servlet对象init(), 初始化servlet, 该方法
+在servlet的一生中只会执行一次
+    2. 紧接着马上调用servlet的service()方法, 处理具体的业务, 并且向客户端
+响应处理结果, 每次发送请求都会调用一次该方法
+    3. 当服务器关闭的时候, 服务器会调用servlet的destroy()方法, 销毁servlet的
+实例, 这个方法也只会执行一次
+
+
+配置servlet对象创建的时间:
+<load-on-startup>1</load-on-startup>
+数字越小, 实例化越早
+
+ServletContext: 该对象伴随着服务器的开启和关闭的整个过程
+    怎么获取该对象:
+
+错误405: 当我们使用get方法或者post方式访问一个Servlet的时候, 这种
+访问方式不被servlet支持
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

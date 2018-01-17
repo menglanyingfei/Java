@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+           version="3.1">
+
+    <!-- servlet配置访问路径
+        servlet-name: 可以随便写, 见名知义
+        servlet-class: 类的全限定名 包名 + 类名
+    -->
+
+    <!-- 配置全局的初始化参数 -->
+    <context-param>
+        <param-name>haha</param-name>
+        <param-value>Java</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/ServletDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo2</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo2</servlet-name>
+        <url-pattern>/ServletDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo5</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo5</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo5</servlet-name>
+        <url-pattern>/ServletDemo5</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletConfigDemo1</servlet-name>
+        <servlet-class>com.wtu.servletConfig.ServletConfigDemo1</servlet-class>
+        <!-- 配置初始化参数 -->
+        <init-param>
+            <param-name>aaa</param-name>
+            <param-value>bbb</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>AAA</param-name>
+            <param-value>BBB</param-value>
+        </init-param>
+
+        <!-- 配置servlet的实例化时间 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <servlet-class>com.wtu.servletContext.ServletContextDemo2</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <servlet-class>com.wtu.servletContext.ServletContextDemo3</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletContextTest</servlet-name>
+        <servlet-class>com.wtu.servletContext.ServletContextTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextTest</servlet-name>
+        <url-pattern>/ServletContextTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <url-pattern>/ServletContextDemo2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <url-pattern>/ServletContextDemo3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConfigDemo1</servlet-name>
+        <url-pattern>/ServletConfigDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestDemo1</servlet-name>
+        <servlet-class>com.wtu.request.RequestDemo1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RequestDemo2</servlet-name>
+        <servlet-class>com.wtu.request.RequestDemo2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <servlet-class>com.wtu.servletContext.ServletContextDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <url-pattern>/ServletContextDemo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestDemo2</servlet-name>
+        <url-pattern>/RequestDemo2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestDemo1</servlet-name>
+        <url-pattern>/RequestDemo1</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+
+
+
+
