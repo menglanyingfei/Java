@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom4.html</title>
+	<meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+  	<ul>
+	  	<li>刘备</li>
+	  	<li>张飞</li>
+	  	<li>关羽</li>
+	  	<li>赵云</li>
+  	</ul>
+  	
+  	<ul>
+  		<li>曹操</li>
+  		<li>张辽</li>
+  		<li>典韦</li>
+  		<li>许褚</li>
+  	</ul>
+
+    <script type="text/javascript">
+    	//查找某一个元素节点下的所有节点对象
+    	//获取ul节点(错误的做法!)
+//    	var ulElement = document.getElementsByTagName("ul")[0];
+//       	var liArray = ulElement.childNodes;
+//    	alert(liArray.length); // 9
+//
+//    	for(var i = 0; i<liArray.length;i++){
+//    		alert(liArray[i].innerHTML);
+//    	}
+    	
+    	//获取ul下所有的子节点
+		var shuElement = document.getElementsByTagName("ul")[0];
+    	// 获取shuElement下所有的li元素节点
+    	var shuLiArr = shuElement.getElementsByTagName("li");
+    	alert(shuLiArr.length);
+    	for(var i = 0 ; i<shuLiArr.length;i++){
+    		alert(shuLiArr[i].innerHTML);
+    	}
+    	
+    	//获取刘备(错误的做法, 得不到值)
+//    	var first = shuElement.firstChild;
+//    	alert(first.innerHTML);
+    </script>
+  </body>
+</html>

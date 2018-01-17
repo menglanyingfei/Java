@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test2.html</title>
+    <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+    <table align="center" border="1" cellspacing="0" width="200px">
+    	<tr>
+    		<th>请选择</th>
+    		<th>编号</th>
+    		<th>姓名</th>
+    	</tr>
+    	<tr>
+    		<td><input type="button" value="选择" onclick="select1('001','狗娃')"/></td>
+    		<td>001</td>
+    		<td>狗娃</td>
+    	</tr>
+    	<tr>
+    		<td><input type="button" value="选择" onclick="select1('002','狗剩')"/></td>
+    		<td>002</td>
+    		<td>狗剩</td>
+    	</tr>
+    	<tr>
+    		<td><input type="button" value="选择" onclick="select1('003','铁蛋')"/></td>
+    		<td>003</td>
+    		<td>铁蛋</td>
+    	</tr>
+    </table>
+    
+    <script type="text/javascript">
+    	function select1(id,name){
+    		// 将内容填充到test1页面中
+    		// 获取该页面的父页面
+    		var pwindow = window.opener;
+    		pwindow.document.getElementById("nameid").value=name;
+    		pwindow.document.getElementById("id").value = id;
+    		//关闭当前页面
+    		window.close();
+    	}
+    </script>
+  </body>
+</html>

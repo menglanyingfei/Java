@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>window_02.html</title>
+	
+    <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+  	<button onclick="clear_()">清除定时任务</button>
+    <script type="text/javascript">
+    	//定义函数
+    	function aaa(){
+    		alert("helloworld");
+    	}
+
+    	//定时器的实现
+//    	window.setTimeout("aaa()", 3000);//只会执行一次
+
+    	var interval = window.setInterval("aaa()", 2000);//循环执行
+
+    	function clear_(){
+    		window.clearInterval(interval);//清除定时任务
+    	}
+    	
+    	//动态地在页面上显示当前系统时间
+    </script>
+  </body>
+</html>

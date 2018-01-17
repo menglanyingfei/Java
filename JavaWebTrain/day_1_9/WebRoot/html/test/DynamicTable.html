@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DynamicTable.html</title>
+</head>
+<body>
+行:<input type="text">
+列:<input type="text" ><br>
+<input type="button" value="生成" id="create"><br>
+<div></div>
+
+    <script type="text/javascript">
+
+        document.getElementById("create").onclick = function () {
+            // 获取两个文本框的value值
+            var row = document.getElementsByTagName("input")[0].value;
+            var col = document.getElementsByTagName("input")[1].value;
+
+            var table = "<table border='1' cellspacing='0' align='center' width='500px'>";
+            // 外层for循环控制tr的对数, 由row控制
+            for(var i = 0; i < row; i++) {
+                table = table + "<tr>";
+                // 内层循环控制td的对数 有col来控制
+                for (var j = 0; j < col; j++) {
+                    table = table + "<td>狗娃</td>";
+                }
+                table = table + "</tr>";
+            }
+
+            table = table + "</table>";
+            // 获取div
+            document.getElementsByTagName("div")[0].innerHTML = table;
+        };
+
+    </script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

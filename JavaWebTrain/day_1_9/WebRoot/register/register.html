@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML><!-- InstanceBegin template="/Templates/index.dwt" codeOutsideHTMLIsLocked="false" -->
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="../css/mainpage.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/tabs.css" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>注册页面</title>
+<!-- InstanceEndEditable --><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<style type="text/css">
+<!--
+.STYLE5 {font-size: 36px}
+-->
+</style>
+<!-- InstanceParam name="FootOptionalRegion1" type="boolean" value="true" -->
+</HEAD>
+
+<BODY>
+<!--
+    1、要整体规划
+
+    2、表格要居中
+
+    3、字体的样式设为font-weight:bold，否则很难看。
+-->
+<div id="head"> <!--首页的头部-->
+  <table width="100%"  border="0">
+    <tr>
+       <td width="55%" rowspan="2"><div align="left"><img src="../images/logo.gif" width="240" height="31" /></div></td>
+       <td width="12%"><div align="right"><img src="../images/banner_1.gif" width="51" height="24" /></div></td>
+       <td width="6%"><div align="right"><img src="../images/banner_2.gif" width="51" height="24" /></div></td>
+       <td width="8%"><div align="right"><img src="../images/banner_3.gif" width="73" height="24" /></div></td>
+       <td width="5%"><div align="right"><img src="../images/banner_4.gif" width="39" height="24" /></div></td>
+       <td width="7%"><div align="right"><img src="../images/banner_5.gif" width="62" height="24" /></div></td>
+       <td width="7%"><div align="right"><a href="../client_center/FrameSet.html" target="_blank"><img src="../images/banner_6.gif" width="61" height="24" border="0" /></a></div></td>
+    </tr>
+    <tr>
+      <td colspan="6"><div align="right">您好，欢迎来淘宝！[<a href="register.html" target="_self">免费注册</a>][<a href="../login/login.htm" target="_self">登录</a>] 阿里旺旺  支付宝 </div></td>
+    </tr>
+  </table>
+   
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td><img src="../images/table_1.gif" width="950" height="35" /></td>
+      </tr>
+      <tr align="left">
+         <td>
+			<table  width="950" height="55" cellpadding="0" cellspacing="0"  border="0" background="../images/slice_1.gif" style="vertical-align:top">
+          		<form id="search_form" method="post" action="">
+				<tr>
+            		<td width="11%" align="right">
+						<SELECT name=search_type> 
+  						<OPTION value=auction selected>搜索宝贝</OPTION> 
+						<OPTION value=shop>搜索店铺</OPTION> 
+  						<OPTION value=nick>搜索掌柜</OPTION> 
+						<OPTION value=info>搜索资讯</OPTION> 
+						<OPTION value=web>搜索网页</OPTION></SELECT>
+					</td>
+             		<td width="89%">
+						<label>
+                		<input type="text" name="textfield" />
+            			<SELECT id=cat name=cat>   
+						<OPTION value="" selected>所有分类</OPTION> 
+						<OPTION value=25>玩具/动漫/模型/卡通</OPTION> 
+						<OPTION value=50008075>购物优惠券/门票/美容健身卡</OPTION> 
+						<OPTION value=50007216>鲜花速递/蛋糕配送/园艺花艺</OPTION> 
+						<OPTION value=50003754>网店服务/物流/个性/家政/婚庆</OPTION> 
+						</SELECT>
+                		<input type="submit" name="Submit" value="  搜 索  " />
+            		    <span class="fontcolor_white">[ 高级搜索 ] [ 使用帮助 ]  </span>
+						</label>
+					</td>
+                </tr>
+          		<tr class="fontcolor_white">
+            		<td align="right">热门搜索：</td>
+            		<td align="left"> &nbsp;T恤 女鞋 手机 比基尼 魔兽世界 减肥 七分裤 娃娃衫 特价机票 连衣裙 Q币 美白防晒 热销品 二手房 </td>
+          		</tr>
+				</form>
+            </table>
+		  
+	    </td>
+    </tr>
+  </table>
+</div>
+
+<!-- InstanceBeginEditable name="ContentEditRegion3" -->
+<div id="content">
+    <!--首页的中间部分-->
+<SCRIPT language="javascript" type="text/javascript">
+//checkUserName() && sNameCheck() && passCheck() && bdaycheck() && genderCheck() && emailcheck() &&
+function validateform(){
+	if(checkUserName() && sNameCheck() && passCheck()&& emailcheck() && bdaycheck() && genderCheck()  && agree( )) 
+	   return true;
+	 else
+	   return false;
+	 
+	
+}
+ //validate Name
+function checkUserName(){  
+var fname = document.userfrm.fname.value;
+var lname = document.userfrm.lname.value;
+// validate first Name
+if(fname.length != 0){
+	for(i=0;i<fname.length;i++){
+	var ftext = fname.substring(i,i+1);
+		if(ftext < 9 || ftext > 0){
+			alert("名字中包含数字 \n"+"请删除名字中的数字和特殊字符");
+			document.userfrm.fname.focus();
+			document.userfrm.fname.select();
+			return false
+		}
+	}
+}
+else{
+	alert("请输入“名字”文本框");
+	document.userfrm.fname.focus();
+	return false
+}
+// Validate last name
+if(fname.length != 0){
+	for(i=0;i<fname.length;i++){
+	var ftext = fname.substring(i,i+1);
+		if(ftext < 9 || ftext > 0){
+			alert("名字中包含数字 \n"+"请删除名字中的数字和特殊字符");
+			document.userfrm.fname.focus();
+			document.userfrm.fname.select();
+			return false
+		}
+	}
+}
+else{
+	alert("请输入“名字”文本框");
+	document.userfrm.fname.focus();
+	return false
+}
+// Validate last name
+if(lname.length != 0){
+	for(j=0;j<lname.length;j++){
+	var ltext = lname.substring(j,j+1);
+		if(ltext < 9 || ltext > 0){
+			alert("姓氏中包含数字 \n"+"请删除姓氏中的数字和特殊字符");
+			document.userfrm.lname.focus();
+			document.userfrm.lname.select();
+			return false
+		}
+	}
+}
+else{
+	alert("“姓氏”文本框为空");
+	document.userfrm.lname.focus();
+	return false;
+	}
+return true;
+} 
+// Login Name Validation
+function sNameCheck(){
+var sname = document.userfrm.sname.value;
+var illegalChars = /\W/;
+	if(sname.length != 0){
+		if(illegalChars.test(sname)){
+		alert("登录名无效");
+		document.userfrm.sname.select();
+		return false;
+		}
+	}
+	else{
+	alert("是否忘记输入登录名？");
+	document.userfrm.sname.focus();
+	return false
+	}
+	return true;
+}
+//Validate password
+function passCheck(){
+var userpass = document.userfrm.pass.value;
+var ruserpass = document.userfrm.rpass.value;
+var illegalChars = /[\W_]/;// allow only charactors and numbers
+	// Check if Password field is blank.
+	if(userpass == "" || ruserpass == ""){
+		alert("未输入密码 \n" + "请输入密码");
+		document.userfrm.pass.focus();
+	return false;
+	}
+	// Check if password length is less than 6 charactor.
+	if(userpass.length < 6){
+		alert("密码必须多于或等于 6 个字符。\n");
+		document.userfrm.pass.focus();
+	return false;
+	}
+	//check if password contain illigal charactors.
+	else if(illegalChars.test(userpass)){
+		alert("密码包含非法字符");
+		document.userfrm.pass.select();
+		return false;
+	}
+	
+	else if(userpass != ruserpass){
+		alert("密码不符");
+		document.userfrm.rpass.select();
+		return false;
+	}
+	return true;
+}
+
+// Email Validation
+function emailcheck(){
+var usermail = document.userfrm.email.value;
+
+	if(usermail.length == "0"){
+	alert("Email 文本框为空")
+	document.userfrm.email.focus();
+	return false;
+	}
+	if(	usermail.indexOf("@") < 0 || usermail.indexOf(".") < 0 || usermail.indexOf("@") > usermail.indexOf(".")){
+	
+	  alert("Email 地址无效");
+	  return false;
+	}
+	return true;
+}
+
+function bdaycheck(){
+var bmonth = document.userfrm.bmon.value;
+var bday = document.userfrm.bday.value;
+var byear = document.userfrm.byear.value;
+//alert(bmonth + "/" +  bday + "/" + byear);
+	if(bmonth == "" || bday == "" || byear == "" || bday=="dd" || byear == "yyyy"){
+		alert("请输入您的生日");
+		document.userfrm.bmon.focus();
+		return false;
+	}
+	
+	for(i=0; i<bday.length; i++){
+	var bnum = bday.substring(i,i+1)
+		if(!(bnum < 9 || bnum > 0)){
+		alert("生日无效");
+		document.userfrm.bday.focus();
+		return false;
+		}
+	}
+
+	for(j=0; j<byear.length; j++){
+	var bynum = byear.substring(j,j+1)
+		if(!(bynum < 9 || bynum > 0)){
+		alert("生日无效");
+		document.userfrm.byear.focus();
+		return false;
+		}
+	}
+	 //验证出生年月日是否在指定的范围内
+   if (byear<1900||byear>2120){  
+		alert("您输入的出生年份超出范围！\n请重新输入！");
+		document.userfrm.byear.focus();
+		return(false);
+			}
+		else 
+			if(bmonth<0||bmonth>12){
+			 alert("您输入的月份超出范围！\n请重新输入！");
+			 document.userfrm.bmon.focus();
+			 return(false);
+			}
+			else 
+				if(bday<0||bday>31){
+				 alert("您输入的日期超出范围!\n请重新输入！");
+				 return(false);
+				}
+			
+	     return true;
+}
+//check sex
+function genderCheck(){
+var usergen = document.userfrm.gen.length;
+	for(i=0;i<usergen;i++){
+		if(document.userfrm.gen[i].checked){
+		return true;
+		}
+		if (i==usergen-1){
+		alert("请选择性别");
+		return false;
+		}
+	}
+	return true;
+}
+function agree( )
+{
+   if (document.userfrm.okradio[0].checked==false)
+   {
+      alert("您必须同意淘宝网的协议！才能加入会员");
+	  return false;
+   }
+   else
+      return true;
+}
+</SCRIPT>
+
+<TABLE width="950" border="0" align="center">
+  <TR>
+    <TD width="250" height="75"><IMG src="images/logo.gif" width="250" height="40"></TD>
+    <TD height="75"><IMG src="images/reg.gif" width="250" height="50"></TD>
+	<TD width="260" height="75">&nbsp;</TD>
+  </TR>
+</TABLE>
+
+<TABLE width="950" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
+ <FORM name="userfrm" method="post" action="register_success.htm" onSubmit="return validateform( )">
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">名字：</TD>
+    <TD width="507" align="left" bordercolor="#E7E3E7"><INPUT name="fname" type="text" class="register_textBroader"  
+
+ id="fname" size="24"></TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">姓氏：</TD>
+    <TD align="left" bordercolor="#E7E3E7"><INPUT name="lname" type="text" class="register_textBroader"  id="lname" 
+
+size="24"></TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160"  align="right" bgcolor="#E7FBFF">登录名：</TD>
+    <TD align="left" bordercolor="#E7E3E7"> <INPUT name="sname" type="text" class="register_textBroader"  id="sname" 
+
+size="24">
+（可包含 a-z、0-9 和下划线）</TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">密码：</TD>
+    <TD align="left" bordercolor="#E7E3E7"> <INPUT name="pass" type="password" class="register_textBroader"  
+
+id="pass" size="26">
+（至少包含 6 个字符） </TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" height="0" align="right" bgcolor="#E7FBFF">再次输入密码：</TD>
+    <TD height="0" align="left" bordercolor="#E7E3E7"><INPUT name="rpass" type="password" 
+
+class="register_textBroader"  id="rpass" size="26"></TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" height="0" align="right" bgcolor="#E7FBFF">电子邮箱：</TD>
+    <TD height="0" align="left" bordercolor="#E7E3E7"><INPUT name="email" type="text" class="register_textBroader"  
+
+id="email" size="24">（必须包含 @  字符）</TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">性别：</TD>
+    <TD align="left" bordercolor="#E7E3E7">
+		<INPUT name="gen" type="radio"   value="男" checked>
+	       <IMG src="images/Male.gif" width="23" height="21">男&nbsp; 
+	    <INPUT name="gen" type="radio" value="女" class="input">
+	       <IMG src="images/Female.gif" width="23" height="21">女
+    </TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">爱好：</TD>
+    <TD align="left" bordercolor="#E7E3E7">
+	  <LABEL>
+	  	<INPUT type="checkbox" name="checkbox" value="checkbox">
+	  </LABEL>
+		  运动&nbsp;&nbsp;
+	  <LABEL>
+	  <INPUT type="checkbox" name="checkbox2" value="checkbox">
+	  </LABEL>
+		聊天&nbsp;&nbsp;
+	  <LABEL>
+		<INPUT type="checkbox" name="checkbox22" value="checkbox">
+	  </LABEL>
+		玩游戏
+	</TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" align="right" bgcolor="#E7FBFF">出生日期：</TD>
+    <TD align="left" bordercolor="#E7E3E7">
+		<INPUT name="byear" class="register_textBroader"   id="byear" onFocus="this.value=''" value="yyyy" 
+
+size=4 maxLength=4 >&nbsp;年&nbsp&nbsp
+		   <SELECT name="bmon"  >
+			<OPTION value="" selected>[选择月份]
+		     <OPTION value=0>一月
+		     <OPTION value=1>二月
+		     <OPTION value=2>三月
+		     <OPTION value=3>四月
+		     <OPTION value=4>五月
+		     <OPTION value=5>六月
+		     <OPTION value=6>七月
+		     <OPTION value=7>八月
+		     <OPTION value=8>九月
+		     <OPTION value=9>十月
+		     <OPTION value=10>十一月
+		     <OPTION value=11>十二月 
+		  </SELECT>&nbsp月&nbsp&nbsp;
+		  <INPUT name="bday" class="register_textBroader" id="bday" onFocus="this.value=''" value="dd" 
+
+size=2 maxLength=2 >日 
+	</TD>
+  </TR>
+  <TR class="register_table_line">
+    <TD width="160" height="35" align="right" bgcolor="#E7FBFF">
+        <INPUT type="reset" name="Reset" value=" 重   填 "></TD>
+    <TD height="35" align="left" bordercolor="#E7E3E7">
+		<INPUT type="submit" name="Button" value="同意以下服务条款，提交注册信息">
+	</TD>
+  </TR>
+  <TR>
+    <TD colspan="2"><TABLE width="760" border="0">
+      <TR>
+        <TD height="36">
+			<H4><IMG src="images/read.gif" width="35" height="26">阅读淘宝网服务协议 </H4>
+	    </TD>
+      </TR>
+      <TR>
+        <TD height="120">
+			<TEXTAREA name="textarea" cols="80" rows="6">
+欢迎阅读服务条款协议，本协议阐述之条款和条件适用于您使用Taobao.com网站的各种工具和服务。
+本服务协议双方为淘宝与淘宝网用户，本服务协议具有合同效力。 
+淘宝的权利和义务
+1.淘宝有义务在现有技术上维护整个网上交易平台的正常运行，并努力提升和改进技术，使用户网上交易活动的顺利。 
+2.对用户在注册使用淘宝网上交易平台中所遇到的与交易或注册有关的问题及反映的情况，淘宝应及时作出回复。 
+3.对于在淘宝网网上交易平台上的不当行为或其它任何淘宝认为应当终止服务的情况，淘宝有权随时作出删除相关信息、终止服务提
+
+供等处理，而无须征得用户的同意。 
+4.因网上交易平台的特殊性，淘宝没有义务对所有用户的注册资料、所有的交易行为以及与交易有关的其他事项进行事先审查。 	
+		  </TEXTAREA>
+		</TD>
+      </TR>
+    </TABLE></TD>
+  </TR>
+  </FORM>
+</TABLE>
+</div>
+<!-- InstanceEndEditable --><!-- InstanceBeginEditable name="EditRegion4" -->
+<div id="foot">
+  <!--首页页脚-->
+  <table width="100%">
+    <tr>
+      <td><hr width="950"/></td>
+    </tr>
+    <!--画直线-->
+    <tr>
+      <td><div class="fontcolor_blue"> <a href="#">关于淘宝 广告服务</a> <a href="#">合作伙伴</a> <a href="#">客户中心</a> <a href="#">诚征英才</a> <a href="#">联系我们</a> <a href="#">网站地图</a> <a href="#">热门品牌 版权说明</a> </div></td>
+    </tr>
+    <tr>
+      <td><div> 全球阿里巴巴 ： <a href="#">中国站</a> <a href="#">国际站 日文站 淘宝站 支付宝 中国雅虎 口碑网 阿里软件 淘宝推广联盟 </a> </div></td>
+    </tr>
+    <tr>
+      <td><div>Copyright 2003-2007, 版权所有 TAOBAO.COM</div></td>
+    </tr>
+    <tr>
+      <td><div class="fontcolor_blue">ICP证：浙B2-20050291</div></td>
+    </tr>
+    <tr>
+      <td><div>广告经营许可证号：3301061000468</div></td>
+    </tr>
+  </table>
+</div>
+<!-- InstanceEndEditable -->
+</BODY>
+<!-- InstanceEnd --></HTML>

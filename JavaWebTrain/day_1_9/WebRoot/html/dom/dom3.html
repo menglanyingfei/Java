@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom3.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+  	<input type = "text" name = "username" value = "gouwa" />
+    <script type="text/javascript">
+    	//Element操作属性节点
+    	
+    	//操作元素节点的属性
+    	  /*
+    	  	1.   元素对象.属性名       获取属性值
+    	  	2.   元素对象.getAttribute("属性名")     获取属性值
+    	  	3.   元素对象.setAttribute("属性名","属性值");  添加或者设置属性名和对应的属性值
+    	  	4.   元素对象.removeAttribute("属性名");
+    	  */
+    	  alert(document.getElementsByTagName("input")[0].getAttribute("name"));//获取属性值
+    	  //设置属性值
+    	  document.getElementsByTagName("input")[0].setAttribute("value","狗剩");
+    	  
+    	  //移除属性
+    	  document.getElementsByTagName("input")[0].removeAttribute("value");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>window_03.html</title>
+	
+    <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+  	<button onclick="getDateTime()">获取当前时间</button>
+  	<span id="span_id"></span>
+   	<script type="text/javascript">
+   		//定义回调函数 用来获取当前系统时间
+   		function getTime(){
+   			var date = new Date();
+//   	   		alert(date.toLocaleString());
+//   	   		document.write(date.toLocaleString());
+
+   	   		var strDate = date.toLocaleString();
+   	   		document.getElementById("span_id").innerHTML=strDate;
+   		}
+   		
+   		function getDateTime(){
+   		//通过定时器来执行该回调函数
+   	   		window.setInterval("getTime()", 1000);
+   		}
+   	</script>
+  </body>
+</html>

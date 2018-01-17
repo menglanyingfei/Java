@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom5.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+  	<select onchange="change_()">
+  		<option>武汉</option>
+  		<option selected>长沙</option>
+  		<option>广州</option>
+  		<option>深圳</option>
+  	</select>
+    <script type="text/javascript">
+    	//js中常用事件
+    	//onchange事件的使用, 一般作用在下拉框
+    	function change_(){
+    		//将选中的内容弹出
+    		var optionArray = document.getElementsByTagName("option");
+    		for(var i = 0; i<optionArray.length;i++){
+    			if (optionArray[i].selected == true) {//判断该option元素是否被选中
+					alert(optionArray[i].innerHTML);//输出option元素的文本内容
+				}
+    		}
+    	}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js_04.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+    /*
+    	在js中, == 在比较两个数据的时候, 中间包含了一个数据类型的转换, 先将两个数据类型转换为一致
+    	  === 没有自动转换的功能
+    */
+    	var a = "123";
+    	 if (a==123) {
+			alert("相等");
+		}else{
+			alert("不相等");
+		}
+		if (a===123) {
+			alert("相等");
+		}else {
+			alert("不相等");
+		}
+    </script>
+  </body>
+</html>

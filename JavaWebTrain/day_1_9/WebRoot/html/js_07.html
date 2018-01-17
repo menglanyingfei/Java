@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js_07.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+    	//js中函数的定义
+    	//第一种方式  最简单  最常用
+    	
+    	/*
+    	function 函数名(参数列表){
+			函数体
+		}
+		第二种: 构造方式(动态函数)  不推荐使用
+			var 函数名 = new Function(“参数列表”, ”函数体”);
+		三种: 直接量方式
+		var 函数名 = function(参数列表) {
+		    函数体
+		};
+    	*/
+    	function getSum(a, b){
+    		return a+b;
+    	}
+    	
+    	var getSum2 = function(a,b){
+    		return a + b;
+    	};
+    	
+    	var getSum3 = new Function("a, b", "return a+b");
+    	
+    	alert(getSum2(1,2));
+    	alert(getSum3(1, 2));
+    </script>
+  </body>
+</html>

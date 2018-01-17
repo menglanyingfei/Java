@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>window_01.html</title>
+	
+    <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+  	<button onclick="delete_()">删除</button>
+    <script type="text/javascript">
+    	// alert()  弹出框
+    	// confirm(); 警告框
+     	function delete_(){
+    		var flag = confirm("一定要删除吗 ？不能后悔的！！");
+    		if (flag == true) {
+				alert("删除成功");
+			}
+    	}
+    	
+    	// prompt() 输入框
+//    	function delete_() {
+//    		var itemsID = window.prompt("请输入要删除的商品的id", "默认id");
+//    		alert(itemsID);
+//    	}
+    </script>
+  </body>
+</html>

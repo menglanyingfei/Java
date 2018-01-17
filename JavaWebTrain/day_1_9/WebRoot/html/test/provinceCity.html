@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select onchange="change_(value)" id="province">
+        <option>--请选择--</option>
+        <option value="湖北">湖北</option>
+        <option value="湖南">湖南</option>
+        <option value="广东">广东</option>
+        <option value="江西">江西</option>
+    </select>
+    <select id="city">
+        <option>--请选择--</option>
+    </select>
+
+    <script type="text/javascript">
+        function change_(val) {
+            // 定义二维数组 保存 省份加城市的信息
+            var arr = new Array(4);
+            arr[0] = ["湖北", "武汉", "黄冈", "荆州", "咸宁", "宜昌", "黄石", "恩施"];
+            arr[1] = ["湖南", "长沙", "湘潭", "株洲", "益阳", "岳阳", "邵阳", "衡阳"];
+            arr[2] = ["广东", "广州", "深圳", "东莞", "惠州", "潮州", "汕头", "肇庆"];
+            arr[3] = ["江西", "南昌", "井冈山", "景德镇", "九江", "赣州"];
+
+            // 获取城市的select元素
+            var cityE = document.getElementById("city");
+            var cityArr = cityE.getElementsByTagName("option");
+
+            for (var i = 1; i < cityArr.length; i++) {
+                cityE.removeChild(cityArr[i]);
+                i--;
+            }
+
+            // 清除掉 第二个select中所有的option元素
+
+            /*
+                1. 遍历二维数组 获得每一个元素(一维数组)
+                2. 取得每个一维数组的第一个元素 与 函数的参数传递过来的val进行比较
+                3. 如果两个值相等 遍历该数组, 从第二个元素开始, 取得后面的所有元素
+                4. 创建元素节点 option
+                5. 根据城市的名称创建文本节点
+                6. 将文本节点添加到元素节点
+                7. 将元素节点添加到后面的select中
+
+             */
+            for (var i = 0; i < arr.length; i++) {
+                // 得到每个一维数组
+                var arr2 = arr[i];
+                // 选中了一个一维数组
+                // 该数组的第一个元素正好是我们选中的省份
+                if (arr2[0] == val) {
+                    for (var j = 1; j < arr2.length; j++) {
+                        // 得到每一个城市
+                        var city = arr2[j];
+                        // 创建option元素节点
+                        var optionElement = document.createElement("option");
+                        // 创建文本节点
+                        var cityElement = document.createTextNode(city);
+                        // 将文本节点添加到option元素节点
+                        optionElement.appendChild(cityElement);
+
+                        cityE.appendChild(optionElement);
+                    }
+                }
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

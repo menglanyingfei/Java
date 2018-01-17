@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom6.html</title>
+	<meta charset="UTF-8">
+  </head>
+  
+  <body>
+    	用户名:<input type = "text" value = "请输入用户名"  onfocus="clear_()"  onblur="check_()"/><span style = "color:red">sdfsdf</span>
+    	
+    	<script type="text/javascript">
+    		function clear_(){
+    			document.getElementsByTagName("input")[0].value = "";
+    			document.getElementsByTagName("span")[0].innerHTML = "";
+    		}
+    		
+    		function check_(){
+    			var username = document.getElementsByTagName("input")[0].value;
+    			if (username.length>10) {
+					// 获取span元素
+					document.getElementsByTagName("span")[0].innerHTML = "用户名过长！！！";
+					document.getElementsByTagName("span")[0].style = "color:green";
+				}
+    		}
+    	</script>
+  </body>
+</html>

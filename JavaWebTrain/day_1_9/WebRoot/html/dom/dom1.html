@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom1.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+  	用户名:<input type="text" name = "username" id="userid"/>
+  	       <br/>
+  	性别:<input type="radio" name="sex" value="male"/> 男
+  	    <input type = "radio" name="sex" value="female"/>女
+  	
+  	<button>点击</button>
+  	<script type="text/javascript">
+  		/*
+  		元素节点的获取：
+  		document.getElementById();
+  		document.getElementsByName();
+  		document.getElementsByTagName();
+  		*/
+//  		var nameInput = document.getElementById("userid"); // 根据id获取元素节点
+//  		nameInput.type = "checkbox"; // 将文本框变成复选框
+//  		alert(nameInput.name);
+  		
+//  		//根据标签名来获取元素节点, 得到的是一个对象数组
+//  		var inputArr = document.getElementsByTagName("input");
+//  		alert(inputArr[1].value);
+  		
+  		document.getElementsByTagName("button")[0].onclick = function() {
+  			alert("按钮被点击了");
+  		}
+  		
+  		//根据name属性值来获取
+  		var arr = document.getElementsByName("sex");
+  		for(var i = 0; i < arr.length;i++){
+  			alert(arr[i].value);
+  		}
+  		
+  	</script>
+  </body>
+</html>

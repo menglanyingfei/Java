@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>leftRight.html</title>
+</head>
+<body>
+<div>
+    <select multiple="multiple" id="gou">
+        <option>狗娃</option>
+        <option>狗剩</option>
+        <option>二狗</option>
+        <option>3狗</option>
+        <option>4狗</option>
+        <option>5狗</option>
+        <option>6狗</option>
+    </select>
+
+    <select multiple="multiple" id="guan">
+        <option>hello</option>
+        <option>Java</option>
+        <option>C#</option>
+    </select>
+</div>
+
+<div>
+    <input type="button" value="全部向左移动" onclick="allLeftToRight()">
+    <br>
+    <input type="button" value="选择向左移动" onclick="selLeftToRight()">
+</div>
+
+    <script type="text/javascript">
+        function allLeftToRight() {
+            // 获取到两个select元素节点
+            var gouElement = document.getElementById("gou");
+            var guanElement = document.getElementById("guan");
+
+            // 获取到gou中所有的option元素, 得到一个数组
+            var optionElement = gouElement.getElementsByTagName("option");
+            // 遍历数组 取得每一个option元素
+            for (var i = 0; i < optionElement.length; i++) {
+                guanElement.appendChild(optionElement[i]);
+                i--;
+            }
+        }
+
+        function selLeftToRight() {
+            // 获取到两个select元素节点
+            var gouElement = document.getElementById("gou");
+            var guanElement = document.getElementById("guan");
+
+            // 获取到gou中所有的option元素, 得到一个数组
+            var optionElement = gouElement.getElementsByTagName("option");
+            // 遍历数组 取得每一个option元素
+            for (var i = 0; i < optionElement.length; i++) {
+                // 获得每一个option元素
+                var option = optionElement[i];
+                // 判断 只有被选中的时候 才会向右移动 此时selected == true
+                if (option.selected == true) {
+                    guanElement.appendChild(optionElement[i]);
+                    i--;
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

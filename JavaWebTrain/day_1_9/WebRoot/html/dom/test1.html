@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test1.html</title>
+	<meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+   	<input type = "checkbox" name = "name" value="value" onclick="selectAllOrNone()"/> 全选/全不选
+   	<br/>
+   	爱好:
+   	<input type="checkbox" name="hobby" value="rongyao"/>荣耀
+   	<input type="checkbox" name="hobby" value="lol"/>lol
+   	<input type="checkbox" name="hobby" value="data"/>dota2
+   	<input type="checkbox" name="hobby" value="dadaima"/>打代码
+   	<br/>
+   	<input type = "button" value="全选" onclick="selectAll()"/>
+   	<input type = "button" value="全不选" onclick="selectNone()"/>
+   	<input type = "button" value="返选" onclick="selectOther()"/>
+   	
+   	<script type="text/javascript">
+   		/*
+   			每一个复选框或者单选框按钮, 都有一个属性checked
+   			   如果被选中, 那么checked = true
+   			   如果没有被选中, 那么 checked = false;
+   		*/
+   		function selectAll(){
+   			//获取爱好的4个复选框
+   			var hobbyArray = document.getElementsByName("hobby");
+   			
+   			//遍历数组得到每一个元素节点
+   			for(var i = 0 ; i<hobbyArray.length;i++){
+   				//设置为选中
+   				hobbyArray[i].checked = true;
+   			}
+   		}
+   		
+   		function selectNone(){
+   			//获取爱好的4个复选框
+   			var hobbyArray = document.getElementsByName("hobby");
+   			
+   			//遍历数组得到每一个元素节点
+   			for(var i = 0 ; i<hobbyArray.length;i++){
+   				//设置为不选中
+   				hobbyArray[i].checked = false;
+   			}
+   		}
+   		
+   		function selectOther(){
+   			//获取爱好的4个复选框
+   			var hobbyArray = document.getElementsByName("hobby");
+   			//遍历数组得到每一个元素节点
+   			for(var i = 0 ; i<hobbyArray.length;i++){
+   				//判断是否被选中  如果选中 改成未选中   反之 则改成选中
+   				if (hobbyArray[i].checked == true) {
+   					hobbyArray[i].checked = false;
+				}else {
+					hobbyArray[i].checked = true;
+				}
+   			}
+   		}
+   		
+   		function selectAllOrNone() {
+   			//获取第一个复选框的状态  是否被选中
+   			var checkbox = document.getElementsByTagName("input")[0];
+   			if (checkbox.checked == true) {
+   				selectAll();
+			}else {
+				selectNone();
+			}
+   		}
+   	</script>
+  </body>
+</html>

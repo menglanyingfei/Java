@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>history_01.html</title>
+	
+    <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+    11111111111111111<br>
+    
+    <input type = "button" value="向前" onclick="forword_()"/>
+     <input type = "button" value="退后" onclick="back_()"/>
+     <a href="history_02.html">跳转到第二个页面</a>
+    <script type="text/javascript">
+    	/*
+    	
+    	history对象
+    	back()
+		go()
+		forward()
+    	*/
+    	function forword_(){
+    		history.forward(); // 返回到上一个页面
+//    		history.go(1);
+    	}
+    	
+    	function back_(){
+    		//history.back();
+    		history.go(-1);
+    	}
+    </script>
+  </body>
+</html>

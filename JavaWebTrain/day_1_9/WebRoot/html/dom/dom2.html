@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom2.html</title>
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+    <ul>
+    	<li>狗娃</li>
+    	<li>狗剩</li>
+    	<li>铁蛋</li>
+    </ul>
+    <input type = "button" value="点击领取翠花" onclick="add()"/>
+    
+    <script type="text/javascript">
+    	function add(){
+    		//添加翠花
+    		//创建li元素节点
+    		var liElement = document.createElement("li");
+    		//创建 “翠花” 文本节点
+    		var textNode = document.createTextNode("翠花");
+    		
+    		//将文本节点添加到元素节点: 父节点.appendChild(子节点)
+    		liElement.appendChild(textNode);
+    		
+    		//获取ul元素节点
+    		var ulElement = document.getElementsByTagName("ul")[0];
+    		ulElement.appendChild(liElement);
+    	}
+    </script>
+  </body>
+</html>
