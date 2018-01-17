@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>08.html</title>
+
+      <meta charset="UTF-8">
+
+  </head>
+  
+  <body>
+  
+  	<!-- 
+  		rowspan ：合并行  
+  		  合并行以后必须要去掉下面tr的单元格
+  		 colspan ：合并列
+  		 合并列以后要去掉对应的本行的单元格
+
+  		 cellspacing:单元格的间距
+  		 bordercolor:边框的颜色
+  	 -->
+    <table border="1" align="center" width="800px" height="600px" cellspacing="0" bordercolor="red">
+    	<tr>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td rowspan="2"></td>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    	</tr>
+    	<tr>
+    		<td rowspan="3"></td>
+    		<td></td>
+    		<td colspan="2"></td>
+    	</tr>
+    	<tr>
+    		
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    	</tr>
+    	<tr>
+    		
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    	</tr>
+    </table>
+  </body>
+</html>

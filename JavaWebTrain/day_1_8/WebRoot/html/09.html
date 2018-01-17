@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>09.html</title>
+
+    <meta charset="UTF-8">
+	
+	<style type="text/css">
+		#div_id {
+			width:800px;
+			height:600px;
+			border-style:solid;
+			background-color: red;
+		}
+	</style>
+	
+  </head>
+  
+  <body>
+    <!--
+        表单的控件
+    	文本框:<input type="text"/>
+    	密码框:
+    	单选框:<input type="radio" name="sex" value=""/>女
+    	       1.一定要有value值
+    	       2.多个单选框的name属性值一定要一致
+    	       3.checked 默认选择
+    	复选框:<input type="checkbox" name="hobby" value="">荣耀
+    	下拉框:
+    	多行文本域:
+    	按钮:
+    	
+    	<form action="提交的路径"></form>  表单  表示将数据提交给后台
+    	method:提交的方式
+    	   get:
+    	   post:
+    	   
+    	   大家自己去查询 表单提交中  get提交和post提交的区别？
+     -->
+    <div id="div_id">
+    	<form action="路径"  method="post">
+	    	用户名:<input type="text" name="username" value="请输入用户名！" onfocus="abc()"/>
+	    	<br/>
+	    	密码:<input type="password" name="password"/>
+	    	<br/>
+	    	性别:<input type="radio" name="sex" value="female"  />女
+	    	<input type="radio" name="sex" value="male" checked="checked"/>男
+	    	<br/>
+	    	爱好:
+	    	<input type="checkbox" name="hobby" value="rongyao">荣耀
+	    	<input type="checkbox" name="hobby" value="chiji">吃鸡
+	    	<input type="checkbox" name="hobby" value="lol">lol
+	    	<input type="checkbox" name="hobby" value="daota2">刀塔2
+	    	<input type="checkbox" name="hobby" value="taobao">淘宝
+	    	<input type="checkbox" name="hobby" value="qiaodaima" checked>敲代码
+	    	
+	    	<br/>
+	    	
+	    	地址:
+	    	<select name="province">
+	    		<option value="">湖北</option>
+	    		<option value="">湖南</option>
+	    		<option value="">广东</option>
+	    	</select>
+	    	<select name="city">
+	    		<option value="">武汉</option>
+	    		<option value="">长沙</option>
+	    		<option value="">广州</option>
+	    	</select>
+	    	
+	    	<br/>
+	      自我介绍:
+	      <textarea rows="5" cols="50">
+	      </textarea>
+	      <br/>
+	      <input type="submit" value="注册"/>
+	      <input type="button" value="注册"/>
+	      <button onclick="submit()">注册</button>
+      
+      </form>
+    </div>
+    
+    <script type="text/javascript">
+    
+    	function submit(){
+    		// 暂时不写
+    	}
+    	function abc(){
+    		document.getElementsByTagName("input")[0].value="";
+    	}
+    </script>
+  </body>
+</html>

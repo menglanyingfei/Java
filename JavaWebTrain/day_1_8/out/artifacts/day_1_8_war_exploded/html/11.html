@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>11.html</title>
+
+  <meta charset="UTF-8">
+	
+	<!-- CSS的语法:
+		选择器 {
+			属性名:属性值
+		}
+	-->
+	<style type="text/css">
+		/* 在这个中间编写CSS样式 */
+		/*标签选择器*/
+		p{
+			font-family: "宋体";
+			text-align: center;
+			font-size: 4em;
+		}
+		
+		/*id选择器
+			id属性值在页面是唯一的
+		*/
+		#id1{
+			font-size:2em;/*字体大小*/
+			color:red;/*字体颜色*/
+			background-color:yellow;/*背景颜色*/
+			font-style: italic;/*字体倾斜*/
+			text-decoration: line-through;/*文本上的线条*/
+		}
+		
+		/*类选择器
+			.类名{
+			}
+		*/
+		.pstyle{
+			background-image: url("../image/topfocusb_bg1.gif");/* 设置背景图片 */
+			height:40px;/* 设置高度 */
+			background-repeat: repeat-x;/* 水平方向重复 */
+		}
+		/* 
+			当标签选择器，类选择器，id选择器同时存在的时候, 若同时存在相同的属性名, 属性值的
+			优先级的顺序是
+			id选择器 > 类选择器 > 标签选择器
+		 */
+	</style>
+  </head>
+  
+  <body>
+  		
+    <p id="id1" class="pstyle">窗前明月光</p>
+    <p class="pstyle">疑是地上霜</p>
+    <p class="pstyle">举头望明月</p>
+    <p class="pstyle">低头思故乡</p>
+  </body>
+</html>

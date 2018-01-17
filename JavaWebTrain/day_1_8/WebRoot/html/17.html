@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>17.html</title>
+	
+	<meta charset="UTF-8"/>
+	<!-- 伪类选择器
+		a:link {color: #FF0000}		/* 未访问的链接 */
+		a:visited {color: #00FF00}	/* 已访问的链接 */
+		a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+		a:active {color: #0000FF}	/* 选定的链接 */
+	 -->
+	 <style type="text/css">
+	 	a{
+	 		font-size: 3em;
+	 	}
+	 	a:link{
+	 		/* 未访问 */
+	 	}
+	 	a:hover{
+	 		/* 鼠标放到超链接上 */
+	 		font-size:4em;
+	 		color:red;
+	 	}
+	 	a:active {
+			/* 鼠标点击的样式   不松*/
+			text-decoration: none;
+		}
+		
+		a:visited{
+			/* 访问完毕的样式 */
+		}
+	 </style>
+  </head>
+  
+  <body>
+    <a href="http://www.baidu.com">百度</a>
+  </body>
+</html>
