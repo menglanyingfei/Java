@@ -1,0 +1,405 @@
+课程回顾:
+1. Response
+   向浏览器发送响应体
+        response.getWriter()
+        response.getOutputStream()
+        在一个Servlet中, 只能使用一个流
+
+   向浏览器设置响应头
+        response.setHeader(name, value)
+        response.setHeader("content-type", "text/html;charset=utf-8")
+
+   向浏览器发送状态码
+        sendError(int status, String name)
+
+        setStatus()
+
+   重定向的快捷方式:(使用绝对路径)
+        response.sendRedirect("http://www.baidu.com")
+        response.sendRedirect("带项目名")
+
+2. request
+      a) 获取请求路径
+      b) 获取请求路径的相关信息
+            request.getContextPath() // 得到上下文路径(项目名)
+      c) 获取请求头
+            request.getHeader("referer")    // 获取该请求来自于哪里
+            request.getHeader("user-agent") // 获取浏览器的信息
+      d) 转发和包含
+
+            转发
+            包含
+
+            转发和重定向的区别
+
+=================================================================================================
+JSP入门
+Java Server Page = html + java脚本 + jsp动态标签
+
+Jsp的执行流程:
+JSP -> Servlet -> .class
+
+JSP在项目发布后, 被编译后的Servlet在哪里?
+在Tomcat的work目录下!
+
+jsp中java脚本
+jsp注释: <%-- --%>
+        <% %>   可以在jsp页面中输出一个变量
+            凡是能够在System.out.println()中的代码, 都可以用该脚本输出
+        <%= %>
+            凡是能够写在Java方法中的代码, 都可以写在这里
+        <%! %>
+            凡是能够写在Java类中的代码, 都可以写在这里
+            比如:
+                定义方法, 定义成员变量(全局变量)
+
+jsp页面中获取request域中的数据
+
+练习:
+    通过Java脚本使用循环, 打印一个表格
+
+
+会话跟踪技术
+a) Cookie
+    Cookie: 是由服务器创建, 然后通过响应头发送给浏览器, 并且保存在浏览器中,
+        当浏览器再次访问服务器的时候, 会将Cookie放在请求头中传给服务器
+
+     在服务器中如何创建一个Cookie?
+     Cookie cookie = new Cookie(name, value);
+     默认情况下, value不能是中文
+     但是可以通过URL编码, 在Cookie中保存中文
+
+     编码: URLEncoder:
+    static String encode(String s, "utf-8")
+     解码:
+     URLDecoder:
+     static String decode(String s, "utf-8")
+
+    通过response将cookie设置响应头:
+    // 常用
+    void addCookie(Cookie cookie)
+    void setHeader(String name, String value)
+
+    在服务器中获取浏览器传递过来的Cookie:
+    通过request对象获取
+    Cookie[] getCookies()
+
+    响应头:
+        Set-Cookie:name=gouwa
+    请求头:
+        Cookie:
+        JSESSIONID=7AFE4B9766B503964702B0CC7C9C14DE; name=gouwa; ASP.NET_SessionId=2y0jnu5yxbqk0j20luqzca2z;
+        ticket=f92223d3477d4a759e195fd41f4e5c6e; Idea-755a90e2=cc8656ab-7ff4-4417-9c64-dd3911e79468;
+        JSESSIONID=C476C4B2FF9BD2D9572E5F84708A9634
+
+    cookie的练习:
+        要求: 在登录页面登录一次以后, 可以将用户名保存到登录框中,
+        第二次登录的时候还有用户名, 用户名不要使用中文
+        思路:
+            1. 表单提交到servlet, 获取到用户名, 将用户名保存到Cookie中,
+            然后通过响应头发送给浏览器
+            2. 当再次访问登录的jsp页面时, 将Cookie取出来,
+            并且显示在用户名的输入框中
+
+    设置Cookie的存活时间:
+        cookie默认当浏览器关闭的时候, 会清除掉
+        setMaxAge(int expiry)
+        setMaxAge(1), 以秒为单位, 1小时 = 60 * 60
+            表示cookie会保存到本地硬盘中, 关闭浏览器不会消失
+        setMaxAge(-1)
+            默认情况
+        setMaxAge(0)
+            表示立即清除cookie
+
+   路径问题:
+            1. 查看路径
+                coolie.getPath();
+                浏览器查看cookie
+            2. cookie路径的特点:
+                比如cookie的路径
+                    /day_1_12/servlet
+                    第二次访问服务器的路径:
+                    /day_1_12/CookiePathDemo2
+                那么第二次访问访问浏览器, 不会将cookie带给服务器
+
+             只有当访问路径包含了Cookie的路径的时候, 浏览器才会
+             将cookie带给服务器
+
+     小练习:
+        获取上次访问的时间
+     注意:Cookie的value里不能设置非法字符, 如空格
+     cookie不能跨浏览器
+
+b) HttpSession(非常重要)
+    什么叫做一次会话? 其中, 包括多次请求
+    我们可以理解为打开浏览器, 关闭浏览器看成是一次会话.
+    一个session对象对应一次会话, 在这个过程中有很多request对象,
+    但是只要一个session对象.
+
+
+    HTTPSession是一个域对象, 就有三个方法:
+        setAttribute(name, value) 保存数据
+        getAttribute(name) 获取数据
+        removeAttribute(name) 删除数据
+
+    现在对比三大域对象:
+        范围:
+            最大
+            ServletContext: application
+            对应于整个项目
+            它随着服务器的开启就创建, 服务器关闭就销毁
+            HttpSession: session
+                一个session对象伴随着一次会话, 只要浏览器不关闭或者
+                没有超过session最大存活时间, session对象就一直存在
+            HttpServletRequest: request
+                一个request对象对应一次请求, 只有在转发的时候, 才能使用
+            request作为域对象传输数据
+
+          获取session对象:
+            1. 在jsp页面中, session对象不需要获取, 直接使用即可
+            2. 在servlet中, 使用Request对象获取
+                     HttpSession session =Request.getSession()
+                     HttpSession session =Request.getSession(boolean b);
+                如果b 为true, 那么和不带参数是一样的;
+                如果b为false, 那么有session就直接获取, 没有session就返回null
+
+        练习:
+            用户登录:
+                如果登录成功, 那么重定向到成功页面, 并且显示用户信息,
+                如果失败, 那么跳转到登录页面, 并且显示错误的信息.
+                在没有成功登录的时候, 直接访问成功页面, 会自动跳转到登录页面,
+                并且提示: 请先登录! 只要登录成功, 该网站任何页面都可以访问.
+
+    Session底层是怎样来依赖Cookie的?
+    sessionid -> JSESSIONID
+
+    常用API:
+    getId(): 获取session的id号
+    long getCreationTime() :
+        获取session的创建时间返回一个当前时间的毫秒值
+    getLastAccessedTime()
+        获取最后的活动时间
+     (***)
+     int getMaxInactiveInterval()
+          获取session的最大不活动时间
+      void invalidate()
+        销毁session, 一般用来做退出按钮
+      setMaxInactiveInterval(int interval)
+        设置session的最大不活动时间, 还可以在web.xml文件中
+        配置最大不活动时间
+
+       <!--配置session最大不活动时间, 以分钟为单位 -->
+           <session-config>
+               <session-timeout>60</session-timeout>
+           </session-config>
+
+    Session的应用:
+        图片验证码的实现:
+        见具体实现.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
