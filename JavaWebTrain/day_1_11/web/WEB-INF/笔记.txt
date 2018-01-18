@@ -1,0 +1,295 @@
+Response对象:
+就是服务器用来向浏览器响应内容的
+
+1. 获取响应流
+    在servlet中可以response对象获取一个字节流或者一个字符流
+    PrintWriter pw = response.getWriter(); // 字符流
+    OutputStream out = response.getOutputStream(); // 字节流
+    注意: 在一个Servlet中, 只能使用一种流, 不然就会抛出IllegalStateException异常
+
+2. response设置响应头
+    setHeader(String name, String value) 设置响应头
+
+    服务器向浏览器响应的时候为什么会出现乱码?
+    根本原因: 编码和解码的时候采用的码表不一致导致的
+    服务器采用utf-8的格式编码, 而浏览器采用默认的ISO-8859-1来解读,
+    而ISO-8859-1不支持中文, 所以就乱码.
+    那么这个时候服务器得告诉浏览器 编码格式, 让浏览器采用该码表
+    才不会出现乱码.
+
+    Response.setCharacterEncoding(“UTF-8”); //一般都是不使用的
+    Response.setContentType(“text/html;charset=UTF-8”); //一般使用这个
+
+
+3. 设置状态码
+
+    设置错误状态码
+     void sendError(int sc)
+    设置错误状态码, 并且给出错误提示信息
+    void sendError(int sc, String msg)
+
+    设置状态码
+    void setStatus(int sc)
+
+
+    重定向: 当用户访问某一个servlet的时候, 该servlet向客户端
+    一个302的状态码, 并且响应一个location响应头, 头值为一个地址
+    客户端会自动再次访问该地址, 那么在这个过程中, 客户端发送了两次请求,
+    重定向的地址可以是本项目, 也可以是其它的项目, 所以重定向的路径前面必须
+    有项目名, 也可以使用相对路径(但是不建议)
+    重定向改变了浏览器的地址栏
+
+    response.setStatus(302);
+    response.setHeader("Location", "http://www.baidu.com");
+
+重定向的快捷方法:
+    response.sendRedirect("/day_1_11/index.jsp");
+
+
+Http协议: 客户端跟服务器进行数据传输的标准
+
+请求和响应:
+
+请求头:
+    Referer: 该请求头意思是 该请求来自于哪里, 可以用来做统计和防盗链
+        如果是直接从浏览器输入的网址, 那么是没有该请求头的
+    User-Agent: 用来获取浏览器的信息
+
+响应头:
+    Refresh: 定时跳转
+	Location: 重定向的头
+	Content-type: 设置字符编码
+
+响应状态码:
+    404: 访问的资源路径不存在
+    500: 一般是服务器代码报错, 抛异常
+    405: servlet中没有重写doGet或者doPost方法, 但是提交方式是doGet或者doPost
+    302: 重定向的状态码
+    200: 正常响应
+
+    304: 第一次访问静态资源的时候, 服务器会向浏览器发送一个响应码
+    Last-Modified:Thu, 11 Jan 2018 00:52:17 GMT
+    最后修改该文件的时间
+    第二次访问该静态资源的时候, 浏览器会带一个请求头给服务器
+    If-Modified-Since:Thu, 11 Jan 2018 00:52:17 GMT
+    表示的是文件最后修改的时间, 如果两次时间一致的话, 那么第二次访问的时候, 服务器知道该文件
+    在两次访问之间没有被修改过, 服务器就会发送一个304状态码告诉浏览器, 你不需要我来响应, 使用
+    你自己的缓存即可
+
+
+错误状态的解决方案:
+        如果在访问某些资源的时候, 出现了404, 500, 405等等错误状态码, 那么我们可以
+        给用户一定的友好提示, 可以设置一个错误的页面, 遇到错误就跳转到错误页面
+        可以通过状态码, 也可以通过异常的类型, 但不能同时在一个<error-page>里
+
+
+Request: 封装了浏览器发送过来的所有请求信息
+1. 获取请求参数
+已经讲了
+
+2. 获取请求路径信息:
+    获取上下文路径, 获取项目名
+    String getContextPath()
+      获取请求方式
+     String getMethod()
+
+      获取请求参数
+     String getQueryString()
+
+    String getRequestURI()
+    String getRequestURL()
+
+    获取servlet路径
+    String getServletPath()
+    获取IP地址
+    String getRemoteAddr()
+    获取主机名
+    String getRemoteHost()
+    获取协议
+    String getScheme()
+
+
+乱码解决:
+// post提交 请求乱码解决
+     request.setCharacterEncoding("UTF-8");
+
+ // get提交 请求乱码解决
+1. 修改Tomcat配置文件server.xml
+    加上URIEncoding="utf-8"
+
+ 2.    不管客户端采用什么编码格式, 服务器都会使用ISO-8859-1来解码
+    那么我们只需要重新使用ISO-8859-1进行编码, 然后再通过UTF-8进行解码
+    即可解决乱码问题
+
+String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "utf-8");
+
+
+Post和get请求的区别?
+get请求:
+    1. 表单的默认请求方式, 超链接, location.href, 定时刷新,
+浏览器直接访问, 重定向都是get提交
+    2. get提交如果带参数, 参数只能绑定在url路径上, 参数泄露,
+不安全
+    3. Url路径最大只能是1kb, 那么对于get提交的参数具有长度的限制
+
+    4. 对于get提交的参数解决乱码, 需要重新编码再解码, 比较麻烦
+
+ Post提交:
+    1. 只有明确给出了form表单的method属性为post时候, 才是post提交
+    2. Post提交的参数不需要绑定在url路径上, 它有专门的请求体
+    3. 参数长度更大, 更安全
+    4. Post提交处理乱码只需要
+    request.setCharacterEncoding("utf-8"), 处理比较方便
+
+    注意: 如何在url路径上面绑定参数:
+        url?参数名=参数值&参数名=参数值...
+
+3. Request对象获取请求头:
+    a)  request.getHeader("头名称")
+       Referer: 该请求头可以显示本次请求来源于哪里
+       如果是浏览器直接访问, 那么request.getHeader("referer")
+            得到的是null
+       User-agent:
+
+       小练习: 当请求来自于你们自己的项目, 那么提示访问成功;
+       当请求来自于浏览器直接访问或其他地址, 那么让它重定向到百度
+
+        思路: request对象的使用, response.sendRedirect("http://www.baidu.com");
+
+4. request的请求转发和请求包含
+转发特点:
+  a. 转发一共只有一次请求
+  b. 转发不会改变浏览器地址栏的地址
+  c. 转发只能转发给本应用的资源
+  d. 在转发过程中ServletDemo1(发送请求的Servlet)不能有响应体, 只能有响应头
+
+包含:
+在包含中两个Servlet都可以有响应体, 其它一样
+
+5. request对象作为Java Web四大域对象之一使用
+    request作为域对象的方法:
+        setAttribute(name, value); // 保存数据
+        getAttribute(name); // 获取数据
+        removeAttribute(name); // 删除数据
+
+    Request对象只作用在一次请求中, Request对象在发送请求的时候产生,
+    在请求结束后销毁, 只有在转发和包含中才能使用request传输数据.
+
+注意: 转发不需要带项目名, 重定向需要带项目名
+
+
+小练习:
+   如果用户名是admin, 密码是123456,
+    那么重定向到登录成功的页面，并且显示用户信息，如果登录失败，用response输出一个html页面并且显示错误信息。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

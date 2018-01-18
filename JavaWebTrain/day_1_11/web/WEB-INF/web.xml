@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+           version="3.1">
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo1</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>ServletDemo2</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo2</servlet-name>
+        <url-pattern>/ServletDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo3</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo3</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDemo4</servlet-name>
+        <servlet-class>com.wtu.servlet.ServletDemo4</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo4</servlet-name>
+        <url-pattern>/ServletDemo4</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo3</servlet-name>
+        <url-pattern>/ServletDemo3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/ServletDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!-- 错误状态的解决方案:
+        如果在访问某些资源的时候, 出现了404, 500, 405等等错误状态码, 那么我们可以
+        给用户一定的友好提示, 可以设置一个错误的页面,
+
+     -->
+    <error-page>
+        <error-code>404</error-code>
+
+        <location>/error2.html</location>
+    </error-page>
+
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.Exception</exception-type>-->
+        <!--<location>/error2.html</location>-->
+    <!--</error-page>-->
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</web-app>
