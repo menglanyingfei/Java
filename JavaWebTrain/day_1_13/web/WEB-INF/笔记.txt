@@ -1,0 +1,209 @@
+JSP
+1. jsp的三大指令
+    a) page
+            (可以出现多行)
+           language: jsp支持的语言
+           import:   导包, 该属性是唯一可以重复的属性
+            pageEncoding: 当前jsp页面的编码和ContentType保持一致
+            ContentType: 被编译成Servlet响应的编码,
+                相当于response.setContentType()
+            errorPage:
+                当前jsp页面如果报错, 就会跳转到指定的页面
+            isErrorPage:
+               将当前页面配置成一个错误页面, 那么可以使用exception内置对象
+            isThreadSafe:
+                配置jsp被编译后的servlet是否线程安全, 改变之后影响效率, 一般不用
+             isELIgnored:
+                该属性是true, 那么在jsp页面中不能使用EL表达式
+             session:
+                如果该顺序等于false, 那么不能在jsp页面中使用session对象
+
+        b) include指令:
+            静态包含: 两个jsp页面在编译时结合, 形成一个Servlet, 当然
+            每个jsp都是可以单独显示内容的
+            <%@include file="/jsp/jsp_02.jsp"%>
+        c) taglib: 用来导入第三方标签库, 很重要, 比如在使用jstl标签库的时候就需要
+        通过taglib来导入标签库
+            prefix: 可以随便写, 作为标签的前缀
+            uri: 标签库的路径
+
+            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+2. jsp的动作标签
+        <jsp:include page=""> 动态包含, 两个jsp文件会被编译成
+        两个Servlet, 并且两个jsp都可以响应内容, 跟servlet的包含是一个意思
+
+        <jsp:forward page=""> 跟servlet的转发是一个意思
+
+        <jsp:param name="" value="" > 转发的时候用来传递参数, 在另个页面通过
+        request.getParameter(name)来获取该参数
+
+
+3. jsp的九大内置对象
+    其它分类: 输入输出对象 out, response, request
+        通信控制对象: pageContext, session, application
+        Servlet对象: context, config
+        错误处理对象: exception
+
+    a) page: Object 代表当前jsp页面对象, 相当于this, 几乎不用
+    b) config: ServletConfig  封装的是jsp被编译成servlet以后的配置信息, 几乎不用
+    c) exception: Throwable 该对象的使用需要配置,
+        isErrorPage="true"  exception.getMessage() 用来获取异常信息
+    d) response   HttpServletResponse
+
+    e) out:     JspWriter 用来输出内容 out.print();
+    下面是四个域对象: 范围从小到大
+    f) pageContext PageContext 最小的域对象
+    g)  request     HttpServletRequest
+    h)  session     HttpSession
+    i) application ServletContext
+
+    pageContext
+        1. 作为域对象, 只在当前jsp页面生效
+        2. 代替其它三个域对象使用
+        pageContext.setAttribute("name", "haha", PageContext.REQUEST_SCOPE);
+        pageContext.getAttribute("name", PageContext.REQUEST_SCOPE);
+        3. 来获取其它8个内置对象, 在jsp页面中没啥作用, 都是内置对象
+        pageContext.getOut()
+
+4. EL表达式
+    语法: ${}
+    第一个作用:
+        1. 从四大域对象中获取数据
+        <%-- 全域查找
+            查找顺序: pageContext, request, session, application
+
+            指定域:
+            ${域名.变量名}
+
+        --%>
+        ${name}
+            ${pageScope.name}
+            ${requestScope.name}
+            ${sessionScope.name}
+            ${applicationScope.name}
+
+        EL表达式操作数组, list集合, map集合, javabean对象
+        1. 操作数组和list
+        2. 操作map集合
+
+        EL表达式的11个内置对象:
+          pageScope
+          requestScope
+          sessionScope
+          applicationScope:
+          pageContext: 该对象的作用主要是用来获取其它对象
+            如: request
+            ${pageContext.request.contextPath} -> 项目名
+          param:用来获取请求参数
+          paramValues: 用来获取请求参数(多个请求值的情形)
+          ...
+          cookie: 获取浏览器发送过来的cookie
+
+5. JSTL标签
+    core: 核心标签库
+        先导入jstl核心标签库, 通过taglib指令导入
+        <c:out value="" >
+        向页面输出内容
+
+        <c:out value="${name}" default="xxx"></c:out>
+        先在域里找name属性, 没有就输出default的内容
+
+        <c:set var="name" value="haha" scope="session"></c:set>
+        相当于调用session.setAttribute(name, value)
+
+        <%--从域中删除一个属性, 那么全域删除 --%>
+        <c:remove var="name" scope="session"></c:remove>
+
+        <%-- 项目名:/day_1_13/ --%>
+        ${pageContext.request.contextPath} // /day_1_13
+        <c:url value="/"></c:url>
+
+        if结构
+        <c:if test="${param.score>90}">
+             <c:out value="成绩优秀"></c:out>
+        </c:if>
+
+        if-elseif-else结构:
+        <c:choose>
+            <c:when test="${param.score>100||param.score<0}">
+                分数不正确
+                </c:when>
+                <c:when test="${param.score>90}">
+                    成绩优秀
+                </c:when>
+                <c:when test="${param.score>60}">
+                    成绩一般
+                </c:when>
+                <c:otherwise>
+                    成绩很差
+                </c:otherwise>
+            </c:choose>
+
+          <%--
+          循环遍历
+                 forEach:
+                     end: 结束
+                     begin: 开始
+                     step: 每次增长的幅度
+
+                     for (int i = 0; i < 10; i++)
+             --%>
+             <c:set var="sum" value="0"></c:set>
+
+             <c:forEach end="10" begin="0" step="1" var="i">
+                 <c:set var="sum" value="${sum+i}"></c:set>
+
+             </c:forEach>
+             <c:out value="${sum}"></c:out>
+
+        遍历list集合:
+         <%-- 集合被遍历以后每个元素的名称
+                    items: 域中被保存的变量的变量名
+                    --%>
+                <c:forEach var="ite" items="${requestScope.itemsList}">
+                    <tr>
+                        <th>${ite.name}</th>
+                        <th>${ite.price}</th>
+                        <th>${ite.count}</th>
+                        <th>${ite.detail}</th>
+                        <th>
+                            <a href="#">修改</a>
+                            <a href="#">删除</a>
+                        </th>
+                    </tr>
+                </c:forEach>
+
+
+    Fmt:  格式化
+
+6. JavaWeb 三层框架
+    Dao: jdbc 数据访问层, 只做增删改查
+    Service: 处理业务逻辑
+    Web: servlet, jsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
